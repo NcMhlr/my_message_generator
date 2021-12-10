@@ -19,7 +19,7 @@ const zitatObjekt = {
         switch (zufallsZahl) {
             case 1:
                 const tempArr = this.filterArray(this.arrZitat, this.zufallAusArray(this.arrKategorie));
-                console.log(tempArr)
+                //console.log(tempArr)
                 const obj = this.zufallAusArray(tempArr);
 
                 return {
