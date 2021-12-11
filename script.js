@@ -6,20 +6,21 @@ const zitatObjekt = {
 
     zufallAusArray(arr) {
         const zufallsZahl = Math.floor(Math.random() * arr.length);
+        //console.log(arr[zufallsZahl]);
         return arr[zufallsZahl];
     },
 
-    filterArray(arr, source) {
-        return filteredArray = arr.filter(e => {return e[2] === source});
+    filterArray(arr, source, type) {
+        return filteredArray = arr.filter(e => {return e[type] === source});
 
     },
 
     zufallZitat() {
-        const zufallsZahl = 1 //Math.floor(Math.random() * 3) + 1;
+        const zufallsZahl = Math.floor(Math.random() * 3) + 1;
         switch (zufallsZahl) {
             case 1:
-                const tempArr = this.filterArray(this.arrZitat, this.zufallAusArray(this.arrKategorie));
-                //console.log(tempArr)
+                const tempArr = this.filterArray(this.arrZitat, this.zufallAusArray(this.arrKategorie), 2);
+                // console.log(tempArr1)
                 const obj = this.zufallAusArray(tempArr);
 
                 return {
@@ -30,14 +31,15 @@ const zitatObjekt = {
                 };
                 break;
             case 2:
-
-
+                const tempArrB = this.filterArray(this.arrZitat, this.zufallAusArray(this.arrAutor), 1);
+                // console.log(tempArrB)
+                const obj_B = this.zufallAusArray(tempArrB);
 
                 return {
                     description: 'Ein zufälliges Zitat eines zufälligen Autors.',
-                        categorie: 'noch nicht verfügbar',
-                        autor: this.zufallAusArray(this.arrAutor),
-                        zitat: ''
+                        categorie: obj_B[2],
+                        autor: obj_B[1],
+                        zitat: obj_B[0]
                 };
                 break;
             case 3:
@@ -53,7 +55,7 @@ const zitatObjekt = {
     }
 };
 
-for (i = 0; i < 5; i++) {
+for (i = 0; i < 1; i++) {
     const zitat = zitatObjekt.zufallZitat();
     console.log(zitat.description + '\nKategrie: ' + zitat.categorie + '\nAutor: ' + zitat.autor + '\nZitat: ' + zitat.zitat);
     console.log('--------------------------------------------------------------------------------');
